@@ -6,49 +6,41 @@ A modern multi-tier fitness tracking application built with GitHub Copilot Agent
 
 ```
 octofit-tracker/
-├── frontend/          # React 19 + Vite
-│   ├── src/
-│   ├── package.json
-│   ├── vite.config.ts
-│   └── tsconfig.json
-├── backend/           # Node.js + Express + TypeScript
-│   ├── src/
-│   ├── package.json
-│   ├── tsconfig.json
-│   └── .env.example
+├── frontend/          # React 19 + Vite (Port 5173)
+├── backend/           # Node.js + Express + TypeScript (Port 8000)
 └── README.md
 ```
 
 ## Technology Stack
 
 ### Frontend
-- **React 19** - Latest React version
-- **Vite** - Next generation build tool
-- **TypeScript** - Type-safe development
-- **Port**: 5173
+- **React 19** - UI library
+- **Vite** - Build tool
+- **TypeScript** - Type safety
+- **Port:** 5173
 
 ### Backend
-- **Node.js** - JavaScript runtime
+- **Node.js** - Runtime
 - **Express** - Web framework
-- **TypeScript** - Type-safe development
+- **TypeScript** - Type safety
 - **Mongoose** - MongoDB ODM
-- **Port**: 8000
+- **CORS** - Cross-origin support
+- **Port:** 8000
 
 ### Database
 - **MongoDB** - NoSQL database
-- **Port**: 27017
+- **Port:** 27017
 
 ## Getting Started
 
 ### Prerequisites
 - Node.js (v18+)
-- MongoDB running on localhost:27017
-- npm or yarn
+- MongoDB running locally or connection URI
 
 ### Frontend Setup
 
 ```bash
-cd frontend
+cd octofit-tracker/frontend
 npm install
 npm run dev
 ```
@@ -58,52 +50,59 @@ The frontend will be available at `http://localhost:5173`
 ### Backend Setup
 
 ```bash
-cd backend
+cd octofit-tracker/backend
 npm install
 cp .env.example .env
 npm run dev
 ```
 
-The backend will be available at `http://localhost:8000`
+The backend API will be available at `http://localhost:8000`
 
-### API Health Check
+### Build for Production
 
+**Frontend:**
 ```bash
-curl http://localhost:8000/api/health
+cd octofit-tracker/frontend
+npm run build
+npm run preview
 ```
 
-## Available Scripts
+**Backend:**
+```bash
+cd octofit-tracker/backend
+npm run build
+npm start
+```
 
-### Frontend
-- `npm run dev` - Start development server
-- `npm run build` - Build for production
-- `npm run lint` - Run ESLint
+## API Endpoints
 
-### Backend
-- `npm run dev` - Start development server with ts-node
-- `npm run build` - Compile TypeScript
-- `npm run watch` - Watch for changes and compile
-- `npm start` - Start compiled application
+- `GET /` - API info
+- `GET /health` - Health check
 
 ## Environment Variables
 
-### Backend (.env)
+Create a `.env` file in the backend directory:
+
 ```
 PORT=8000
-MONGODB_URI=mongodb://localhost:27017/octofit-tracker
+MONGODB_URI=mongodb://localhost:27017/octofit
 NODE_ENV=development
 ```
 
 ## Development
 
-This project is initialized with:
-- ✅ React 19 with Vite
-- ✅ Express.js server
-- ✅ TypeScript support
-- ✅ Mongoose for MongoDB
-- ✅ CORS enabled
-- ✅ Development-ready configuration
+### Linting
+
+**Frontend:**
+```bash
+npm run lint
+```
+
+**Backend:**
+```bash
+npm run lint
+```
 
 ## License
 
-ISC
+MIT
